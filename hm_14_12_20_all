@@ -1,0 +1,95 @@
+// Ниже 1-ый номер.
+#include <iostream>
+
+using namespace std;
+
+const double EPS = 1e-12;
+
+int main() {
+	int n;
+	cin >> n;
+	double* array = new double[n];
+	for (int i = 0; i < n; i++) {
+		cin >> array[i];
+	}
+	for (int i = 0; i < n; i++) {
+		if (array[i] < EPS && array[i] >= 0) {
+			cout << i << " ";
+		}
+	}
+}
+// Ниже 2-й номер.
+#include <iostream>
+
+using namespace std;
+
+const double EPS = 1e-12;
+
+int main() {
+	int n, m;
+	cin >> n >> m;
+	double** array = new double*[n];
+	for (int i = 0; i < n; ++i) {
+		array[i] = new double[m];
+	}
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			cin >> array[i][j];
+		}
+	}
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (array[i][j] < EPS && array[i][j] >= 0) {
+				cout << i << " " << j << "\n";
+			}
+		}
+	}
+}
+// Ниже 3-й номер.
+#include <iostream>
+
+using namespace std;
+
+const double EPS = 1e-12;
+
+int main() {
+	int n, m, counter = 0;
+	cin >> n >> m;
+	double array[100][100];
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			cin >> array[i][j];
+		}
+	}
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			if (array[i][j] < EPS) {
+				++counter;;
+			}
+		}
+	}
+	cout << counter;
+}
+// Ниже 4-й номер.
+#include <iostream>
+
+using namespace std;
+
+int main() {
+	int n;
+	cin >> n;
+	double** array = new double*[n];
+	for (int i = 0; i < n; ++i) {
+		array[i] = new double[n];
+	}
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < n; ++j) {
+			cin >> array[i][j];
+		}
+	}
+	for (int i = n - 1; i >= 0; --i) {
+		for (int j = n - i; j < n; ++j) {
+			cout << array[i][j] << " ";
+		}
+	}
+}
