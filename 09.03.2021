@@ -1,6 +1,25 @@
 // 1. Числа Триббоначи с кэшиованием.
-Coming soon..
+
+#include <iostream>
+
+int main() {
+	int n;
+	std::cin >> n;
+	if (typeid(n).name() != "int") {
+		return 0;
+	}
+	int* cache = new int[n + 3];
+	cache[0] = 0; cache[1] = 0; cache[2] = 1;
+	for (int i = 3; i < n; ++i) {
+		cache[i] = cache[i - 1] + cache[i - 2] + cache[i - 3];
+	}
+	for (int i = 0; i < n; ++i) {
+		std::cout << cache[i] << " ";
+	}
+}
+
 // 2. Рекурсивно посчитать произведение элементов массива. 
+
 #include <iostream>
 
 template <typename T> T rec_multiplication(T* array, int n) {
@@ -26,9 +45,13 @@ int main() {
 	std::cout << "Result: " << rec_multiplication(array, n - 1);
 	delete[] array;
 }
+
 // 3. Приключения лягушки. 
+
 Coming soon..
+
 // 4. Создать функцию distance, считающую расстояние от начала координат до точки. Она должна работать как на плоскости, так и в пространстве.
+
 #include <iostream>
 #include <cmath>
 
