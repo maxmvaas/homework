@@ -26,3 +26,73 @@ int main() {
 }
 // 3. Приключения лягушки. 
 // 4. Создать функцию distance, считающую расстояние от начала координат до точки. Она должна работать как на плоскости, так и в пространстве.
+// 4. Создать функцию distance, считающую расстояние от начала координат до точки. Она должна работать как на плоскости, так и в пространстве.
+#include <iostream>
+#include <cmath>
+
+template <typename T> struct point {
+	T x, y;
+	point(T x, T y) : x(x), y(y) {}
+};
+
+template <class T> struct point_space {
+	T x, y, z;
+	point_space(T x, T y, T z) : x(x), y(y), z(z) {}
+};
+
+template <typename T> double distance(T x, T y);
+template <typename T> double distance(T x1, T y1, T x2, T y2);
+template <typename T> double distance(T x, T y, T z);
+template <typename T> double distance(T x1, T y1, T z1, T x2, T y2, T z2);
+template <typename T> double distance(point<T> a);
+template <typename T> double distance(point<T> a, point<T> b);
+template <typename T, typename A> double distance(point<T> a, point<A> b);
+template <typename T> double distance(point_space<T> a);
+template <typename T> double distance(point_space<T> a, point_space<T> b);
+template <typename T, typename A> double distance(point_space<T> a, point_space<A> b);
+
+
+
+int main() {
+	// Слишком много писать, но каждую перегрузку функции distance я проверил на правильность работы. 
+}
+
+template <typename T> double distance(T x, T y) {
+	return pow(pow(x, 2) + pow(y, 2), 0.5);
+}
+
+template <typename T> double distance(T x1, T y1, T x2, T y2) {
+	return pow(pow(x2 - x1, 2) + pow(y2 - y1, 2), 0.5);
+}
+
+template <typename T> double distance(T x, T y, T z) {
+	return pow(pow(x, 2) + pow(y, 2) + pow(z, 2), 0.5);
+}
+
+template <typename T> double distance(T x1, T y1, T z1, T x2, T y2, T z2) {
+	return pow(pow(x2 - x1, 2) + pow(y2 - y1, 2) + pow(z2 - z1, 2), 0.5);
+}
+
+template <typename T> double distance(point<T> a) {
+	return pow(pow(a.x, 2) + pow(a.y, 2), 0.5);
+}
+
+template <typename T, typename A> double distance(point<T> a, point<A> b) {
+	return pow(pow(b.x - a.x, 2) + pow(b.y - a.y, 2), 0.5);
+}
+
+template <typename T> double distance(point<T> a, point<T> b) {
+	return pow(pow(b.x - a.x, 2) + pow(b.y - a.y, 2), 0.5);
+}
+
+template <typename T> double distance(point_space<T> a) {
+	return pow(pow(a.x, 2) + pow(a.y, 2) + pow(a.z, 2), 0.5);
+}
+
+template <typename T> double distance(point_space<T> a, point_space<T> b) {
+	return pow(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2), 0.5);
+}
+
+template <typename T, typename A> double distance(point_space<T> a, point_space<A> b) {
+	return pow(pow(b.x - a.x, 2) + pow(b.y - a.y, 2) + pow(b.z - a.z, 2), 0.5);
+}
